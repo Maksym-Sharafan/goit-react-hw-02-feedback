@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import Notification from '../Notification';
 
+import styles from './Statistics.module.css';
+
 class Statistics extends Component {
   render() {
     const { good, neutral, bad, total, positivePercentage } = this.props;
@@ -9,13 +11,27 @@ class Statistics extends Component {
       <Notification message="No feedback given" />
     ) : (
       <>
-        <h2>Statistics</h2>
-        <ul>
-          <li>Good:{good} </li>
-          <li>Neutral:{neutral} </li>
-          <li>Bad:{bad} </li>
-          <li>Total:{total()} </li>
-          <li>Positive feedback:{positivePercentage()}% </li>
+        <h2 className={styles.statistics__title}>Statistics</h2>
+        <ul className={styles.statistics__list}>
+          <li className={styles.statistics__item}>
+            Good:<span className={styles.span__statistic}>{good}</span>
+          </li>
+          <li className={styles.statistics__item}>
+            Neutral:<span className={styles.span__statistic}>{neutral}</span>
+          </li>
+          <li className={styles.statistics__item}>
+            Bad:<span className={styles.span__statistic}>{bad}</span>
+          </li>
+          <li className={styles.statistics__total}>
+            Total:<span className={styles.span__statistic}>{total()}</span>
+          </li>
+          <li className={styles.statistics__percent}>
+            Positive feedback:
+            <span className={styles.span__statistic}>
+              {positivePercentage()}
+            </span>
+            %
+          </li>
         </ul>
       </>
     );
